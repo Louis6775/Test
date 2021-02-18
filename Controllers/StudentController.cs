@@ -24,5 +24,23 @@ namespace Testapplication.Controllers
         {
             return GetStudents();
         }
+
+        [HttpGet("namestartingwithA")]
+        public IEnumerable<Student> GetStudentWithA()
+        {
+            List<Student> studentlist = GetStudents();
+            studentlist.Add(null);
+            List<Student> studentlist2 = new List<Student>();
+            int i = 0;
+            while (studentlist[i] != null)
+            {
+                if (studentlist[i].FirstName[0] == 'A')
+                {
+                    studentlist2.Add(studentlist[i]);
+                }
+                i++;
+            }
+            return studentlist2;
+        }
     }
 }
